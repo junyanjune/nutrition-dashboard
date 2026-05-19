@@ -1,22 +1,45 @@
-Elite Performance Lab Live Dashboard Report
-The Elite Performance Lab Live Dashboard was developed using athlete performance data collected during the 2025 competitive season. The dataset contains information from 15 elite athletes across five sports: Tennis, Basketball, Formula 1, Soccer, and Breaking. Data collection focused on three core categories: body composition, nutrition, and training session telemetry.
-Body composition and athlete profile data were compiled from a combination of published sports science journals, athlete interviews, team performance reports, and professional sports media sources. Metrics such as body weight, estimated body fat percentage, and height were aggregated from publicly available athlete profiles and performance studies to establish baseline physiological comparisons across sports with different competitive demands.
-Nutritional data was synthesized from athlete interviews, documented meal plans, sports nutrition case studies, and performance-focused sports websites. The dataset included 30 representative performance meals with estimated caloric intake and macronutrient composition, including protein, carbohydrates, and fats. The purpose of this dataset was to evaluate how nutritional strategies differ across athletic disciplines and how fueling patterns support recovery and performance requirements.
-Training telemetry data was estimated using published conditioning studies, wearable tracking summaries reported in sports science literature, and training metrics referenced in interviews and performance articles involving elite athletes. Variables included workout duration and estimated caloric expenditure, resulting in a modeled cumulative burn of approximately 8,100 Kcal across 15 representative training sessions. Combining nutritional intake estimates with training output data allowed the dashboard to evaluate athlete energy balance, recovery efficiency, and sport-specific workload demands.
-The dashboard was designed with a dark-mode, high-contrast interface to support readability in professional athletic and laboratory environments. Each visualization was selected to maximize analytical clarity rather than aesthetic complexity.
-
-The Body Composition Intelligence module uses a three-dimensional bubble chart to compare athletes across multiple physical dimensions simultaneously. Weight is mapped to the X-axis, body fat percentage to the Y-axis, and bubble size represents athlete height. This format was chosen because it allows sports scientists to quickly identify discipline-specific body composition patterns without overcrowding the display. The visualization makes it easy to distinguish lean endurance-oriented athletes from larger power-oriented athletes across sports.
-The Macronutrient Profiles module uses sport-averaged nutritional visualizations with interactive toggles. Nutritional demands vary significantly across sports, so averaging intake at the sport level provides clearer comparisons between disciplines. Coaches can rapidly compare protein, carbohydrate, and fat consumption patterns while identifying whether athlete fueling strategies align with expected metabolic requirements.
-The Session Analysis module visualizes training duration and caloric expenditure over time. Dual toggles allow analysts to isolate either total workout length or energy burn. This design helps separate raw training volume from physiological intensity, allowing coaching staffs to monitor fatigue trends, cardiovascular efficiency, and recovery stress more accurately.
-
-Several important performance trends emerged from the 2025 dataset.
-First, the dashboard confirmed a cumulative energy expenditure of approximately 8.1k Kcal across 15 monitored sessions, providing a reliable baseline for evaluating athlete recovery requirements and nutritional replenishment strategies.
-Second, cross-analysis between meal logs and training telemetry identified inconsistencies in pre-training fueling patterns. Multiple athletes showed accelerated energy depletion early in training sessions, suggesting insufficient carbohydrate timing before high-intensity activity. This finding highlights a clear opportunity to optimize pre-session nutrition protocols for improved endurance and sustained output.
-Third, the body composition visualization revealed strong sport-specific clustering patterns. Formula 1 drivers and Breaking athletes consistently occupied the leanest ranges, generally maintaining body fat percentages between 7% and 9%. These sports prioritize agility, reaction time, and strength-to-weight efficiency.
-In contrast, Basketball and Soccer athletes clustered at higher body weights while still maintaining relatively low body fat percentages between 7% and 12%. This reflects the greater structural demands of high-impact, multidirectional sports requiring both endurance and physical durability.
-Overall, the dashboard successfully demonstrated how integrated biometric, nutritional, and training datasets can uncover actionable performance insights that are not visible when each category is analyzed independently.
-
-With unlimited resources, the Elite Performance Lab platform could evolve from a retrospective monitoring tool into a fully predictive athlete optimization ecosystem.
-The first major advancement would involve replacing periodic scans and manual nutrition logging with continuous biometric monitoring through non-invasive wearable or sub-dermal sensors. These systems could stream live data on glucose levels, lactate accumulation, hydration status, cortisol, and heart-rate variability directly into the dashboard in real time.
-The platform could then build predictive digital models for each athlete using machine learning and longitudinal physiological data. These “digital twins” would simulate training outcomes before workouts occur, allowing coaches to test different recovery strategies, nutritional plans, and training loads while minimizing injury risk and overtraining.
-Finally, the system could integrate directly with automated recovery and nutrition systems. Real-time metabolic feedback could trigger personalized meal preparation and hydration recommendations immediately after training sessions, creating a fully connected human performance optimization environment.
+Elite Performance Lab Dashboard (Streamlit + Interactive Analytics UI)
+1. Data Provenance and Methodology
+The Elite Performance Lab Dashboard is built on a relational athlete performance dataset covering 15 elite athletes across five sports: Tennis, Basketball, Formula 1, Soccer, and Breaking. The dataset is designed as a synthetic but structured representation of athlete physiology, nutrition, and training behavior, enabling cross-sport comparison under a unified schema.
+Rather than relying on live instrumentation or continuous biometric tracking, the dataset integrates publicly available athlete profiles, sports journalism insights, sports science literature, and representative nutrition and training assumptions. These sources are harmonized into a consistent analytical model to allow comparability across fundamentally different athletic disciplines.
+The dataset is organized into three primary relational layers:
+Body Composition Data
+Athlete physical attributes—including body weight, height, and estimated body fat percentage—are compiled from publicly available athlete information and sports reference materials. These variables form the foundation for derived metrics such as BMI, lean mass, fat mass, and weight-normalized performance indicators.
+Nutritional Data
+Nutrition inputs are constructed from representative meal logs mapped to macronutrient composition (protein, carbohydrates, and fats). These are aggregated at the athlete level to compute total energy intake, macro distributions, and per-kilogram intake ratios. This enables comparison of fueling strategies across sports with different metabolic demands.
+Training Session Data
+Training workload is represented through session-level records including duration (minutes), intensity classification (high, moderate, low), and derived energy-related proxies such as calories per minute and calories per kilogram. These variables are used to analyze training load structure and its relationship to fueling patterns.
+2. Visualization Architecture and Design Motivation
+The dashboard is implemented as a Streamlit-based interactive analytics application, using Plotly for all visualizations. The design emphasizes fast exploration of athlete-level and sport-level patterns through linked filtering, hover interactions, and metric switching.
+Body Composition Intelligence (Scatter + Pie + Bar Views)
+The core body composition analysis uses a multi-variable scatter plot:
+X-axis: Body weight (kg)
+Y-axis: Body fat percentage (%)
+Bubble size: Height (cm)
+Color: Sport category
+This visualization enables simultaneous comparison of size, composition, and sport-specific clustering. Hover tooltips expose derived metrics such as lean mass, BMI, and nutrition variables.
+Additional supporting views include:
+Sport distribution pie chart
+Sport-level average comparison bar chart with selectable metrics (e.g., calories, protein, session duration, body fat)
+Together, these views allow users to identify structural differences between endurance, power, and precision-based sports.
+Macronutrient Analysis (Stacked Bars + Normalized Heatmap)
+Nutritional patterns are visualized through multiple complementary views:
+A stacked bar chart shows macronutrient energy distribution (protein, carbohydrates, fat) across athletes, expressed as percentage of total caloric intake. This highlights differences in dietary structure across sports.
+A secondary analysis normalizes nutrient intake per kilogram of body weight, enabling fair comparison across athletes of different sizes. This is visualized using a heatmap that highlights relative density patterns across protein, carbohydrate, fat, and caloric intake.
+These views emphasize both absolute intake and body-size-adjusted nutritional strategies.
+Training Load and Fueling Analysis (Scatter + Bar + Aggregations)
+Training behavior is analyzed through multiple linked plots:
+Scatter plots compare session duration with total calorie intake to evaluate alignment between training load and fueling behavior.
+Bar charts show calories per minute of training, revealing relative fueling efficiency across athletes.
+Additional views normalize intake per kilogram of body weight to assess relative energy demand.
+At the sport level, aggregated metrics are used to compare:average session duration; average calorie intake rate; average protein intake per kilogram
+This allows identification of structural differences in training intensity and fueling strategies across sports categories.
+3. Key Findings
+Analysis of the dataset reveals distinct sport-specific physiological and nutritional patterns. First, body composition clusters strongly by sport. Formula 1 drivers and Breaking athletes occupy the lowest body weight and body fat ranges, reflecting performance requirements that prioritize agility and power-to-weight efficiency. In contrast, basketball players show the highest body mass and height distributions while maintaining relatively low body fat, reflecting reliance on lean mass rather than adiposity.
+Second, nutritional analysis shows substantial variation in macronutrient distribution across athletes. Carbohydrate intake dominates in endurance- and reaction-based sports such as Tennis and Formula 1, while protein intake varies widely but remains generally below commonly cited strength-training benchmarks when normalized by body weight.
+Third, training load and fueling relationships are not fully aligned. Some athletes show relatively low caloric intake relative to session duration, suggesting potential under-fueling compared to training volume. When normalized metrics such as calories per minute and calories per kilogram are examined, differences in fueling efficiency across sports become more apparent.
+Finally, the interactive design significantly improves interpretability. The combination of sport-level filtering, metric switching, and multi-view comparisons enables faster identification of structural patterns than static reporting formats.
+4. Future Outlook
+The current dashboard functions as an exploratory analytics system built on structured but static data. Its next evolution would involve scaling toward more automated and dynamic data pipelines.
+Future enhancements could include integration with larger athlete datasets, real-world wearable data (where available), and more granular session tracking. This would allow more accurate modeling of training load, recovery patterns, and nutrition timing effects.
+On the modeling side, derived features such as energy balance, rolling workload averages, and sport-specific normalization curves could support deeper performance benchmarking. From a product perspective, the system could evolve into a decision-support tool for coaches and sports scientists, enabling standardized comparison across athletes and supporting more data-driven nutrition and training decisions.
