@@ -1,0 +1,17 @@
+performance_metric_id,session_id,metric_name,metric_value,unit
+1,1,distance_covered_km,7.5,km
+2,2,distance_covered_km,7.2,km
+3,3,distance_covered_km,7.8,km
+4,4,points_scored,28.0,points
+5,4,minutes_played,38.0,min
+6,5,three_pointers_made,8.0,shots
+7,6,RPE,4.0,1-10 scale
+8,7,sim_laps,60.0,laps
+9,8,sim_laps,62.0,laps
+10,9,sim_laps,61.0,laps
+11,10,distance_covered_km,9.5,km
+12,11,distance_covered_km,10.1,km
+13,12,distance_covered_km,9.8,km
+14,13,rounds_completed,6.0,rounds
+15,14,rounds_completed,6.0,rounds
+16,15,rounds_completed,6.0,rounds

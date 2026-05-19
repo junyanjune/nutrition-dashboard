@@ -1,0 +1,11 @@
+food_id,food_name,brand_name,food_category_id,serving_size_amount,serving_size_unit,is_supplement,notes
+1,Oatmeal,,1,50.0,g,0,Rolled oats
+2,Eggs,,2,2.0,large eggs,0,
+3,Grilled Chicken Breast,,2,120.0,g,0,
+4,Brown Rice,,1,150.0,g,0,
+5,Pasta (Plain),,1,180.0,g,0,
+6,Mixed Salad,,3,100.0,g,0,Leafy greens + vegetables
+7,Fruit Bowl,,4,150.0,g,0,Mixed berries/banana
+8,Whey Protein Shake,,5,1.0,scoop,1,
+9,Grilled Fish,,2,120.0,g,0,
+10,Steamed Vegetables,,3,120.0,g,0,
