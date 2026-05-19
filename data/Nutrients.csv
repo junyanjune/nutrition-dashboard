@@ -1,0 +1,7 @@
+nutrient_id,nutrient_name,nutrient_type,unit
+1,Energy,Macro,kcal
+2,Protein,Macro,g
+3,Carbohydrate,Macro,g
+4,Fat,Macro,g
+5,Sodium,Electrolyte,mg
+6,Potassium,Electrolyte,mg

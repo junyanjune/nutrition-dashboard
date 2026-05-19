@@ -1,0 +1,5 @@
+restriction_type_id,name,restriction_category,description
+1,Vegan/Plant-Based,Preference,Excludes animal products
+2,Gluten-Sensitive,Medical,Avoids or limits gluten
+3,Lactose Intolerance,Medical,Difficulty digesting lactose
+4,Nut Allergy,Allergy,Allergic reaction to nuts

@@ -1,0 +1,31 @@
+meal_id,athlete_id,meal_datetime,meal_type,context,notes
+1,1,2025-01-02 08:00,Breakfast,Training Day,
+2,1,2025-01-02 13:00,Lunch,Training Day,
+3,2,2025-01-02 08:00,Breakfast,Training Day,
+4,2,2025-01-02 12:30,Lunch,Training Day,Pasta-based meal
+5,3,2025-01-02 08:00,Breakfast,Training Day,Gluten-controlled
+6,3,2025-01-02 14:00,Lunch,Training Day,
+7,4,2025-01-02 09:00,Breakfast,Game Day,
+8,4,2025-01-02 15:00,Lunch,Game Day,
+9,5,2025-01-02 09:00,Breakfast,Training Day,
+10,5,2025-01-02 13:00,Lunch,Training Day,
+11,6,2025-01-02 10:00,Breakfast,Recovery Day,
+12,6,2025-01-02 14:00,Lunch,Recovery Day,
+13,7,2025-01-02 08:00,Breakfast,Race Prep,Plant-based
+14,7,2025-01-02 12:00,Lunch,Race Prep,Plant-based
+15,8,2025-01-02 08:00,Breakfast,Training Day,
+16,8,2025-01-02 12:00,Lunch,Training Day,
+17,9,2025-01-02 07:30,Breakfast,Training Day,
+18,9,2025-01-02 12:30,Lunch,Training Day,
+19,10,2025-01-02 08:00,Breakfast,Training,
+20,10,2025-01-02 13:00,Lunch,Training,
+21,11,2025-01-02 08:30,Breakfast,Training,
+22,11,2025-01-02 13:30,Lunch,Training,
+23,12,2025-01-02 07:30,Breakfast,Training,
+24,12,2025-01-02 12:30,Lunch,Training,
+25,13,2025-01-02 09:00,Breakfast,Practice,
+26,13,2025-01-02 13:00,Lunch,Practice,
+27,14,2025-01-02 08:30,Breakfast,Practice,
+28,14,2025-01-02 12:30,Lunch,Practice,
+29,15,2025-01-02 08:00,Breakfast,Practice,
+30,15,2025-01-02 12:30,Lunch,Practice,

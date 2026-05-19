@@ -1,0 +1,5 @@
+beverage_type_id,name,is_electrolyte_drink,caffeine_mg_per_100ml,notes
+1,Water,0,0.0,
+2,Sports Drink,1,0.0,Electrolyte-containing
+3,Electrolyte Mix,1,0.0,Concentrated electrolyte solution
+4,Coffee,0,40.0,

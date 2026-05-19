@@ -1,0 +1,14 @@
+team_id,team_name,sport_id,competition_level,location
+1,ATP Tour,1,Professional,Global
+2,Los Angeles Lakers,2,Professional,Los Angeles
+3,Golden State Warriors,2,Professional,San Francisco
+4,Dallas Mavericks,2,Professional,Dallas
+5,Mercedes-AMG Petronas F1 Team,3,Professional,"Brackley, UK"
+6,Oracle Red Bull Racing,3,Professional,"Milton Keynes, UK"
+7,Scuderia Ferrari,3,Professional,"Maranello, Italy"
+8,Inter Miami CF,4,Professional,"Miami, USA"
+9,Al Nassr FC,4,Professional,"Riyadh, Saudi Arabia"
+10,Paris Saint-Germain,4,Professional,"Paris, France"
+11,Red Bull BC One All Stars,5,Professional,Global
+12,Pockemon Crew,5,Professional,"Lyon, France"
+13,K.A.K.B Crew,5,Professional,Japan
