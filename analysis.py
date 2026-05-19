@@ -15,8 +15,6 @@ from fpdf.enums import XPos, YPos
 DATA_DIR = "data"
 
 
-# ── Load ──────────────────────────────────────────────────────────────────────
-
 def load_data():
     tables = [
         "Athletes", "AthleteBodyMetrics", "AthleteTeams",
@@ -33,8 +31,6 @@ def load_data():
             print(f"  [warn] missing: {path}")
     return data
 
-
-# ── Compute macros per athlete ─────────────────────────────────────────────────
 
 def compute_macros(data):
     mi   = data["MealItems"]
@@ -54,8 +50,6 @@ def compute_macros(data):
     )
     return macros
 
-
-# ── Build athlete master table ─────────────────────────────────────────────────
 
 def build_master(data, macros):
     ath  = data["Athletes"]
@@ -83,8 +77,6 @@ def build_master(data, macros):
     ).round(1)
     return master
 
-
-# ── Summary stats ──────────────────────────────────────────────────────────────
 
 def sport_summary(master):
     cols = {"Energy": "kcal", "Protein": "protein_g",
@@ -132,8 +124,6 @@ def hydration_summary(data):
           .sort_values("total_ml", ascending=False)
     )
 
-
-# ── PDF ────────────────────────────────────────────────────────────────────────
 
 def _s(text):
     """Sanitise text to latin-1 safe characters for fpdf Helvetica font."""
@@ -222,7 +212,6 @@ class Report(FPDF):
         if col_widths is None:
             col_widths = [190 // n] * n
 
-        # header row
         self.set_fill_color(*DARK)
         self.set_font("Helvetica", "B", 8)
         self.set_text_color(*ORANGE)
@@ -231,7 +220,6 @@ class Report(FPDF):
                       new_x=XPos.RIGHT, new_y=YPos.LAST)
         self.ln()
 
-        # data rows
         for ri, row in enumerate(rows):
             fill_color = (248, 244, 240) if ri % 2 == 0 else WHITE
             self.set_fill_color(*fill_color)
@@ -243,15 +231,10 @@ class Report(FPDF):
             self.ln()
         self.ln(3)
 
-
-# ── Generate ───────────────────────────────────────────────────────────────────
-
 def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
     pdf = Report(orientation="P", unit="mm", format="A4")
     pdf.set_auto_page_break(auto=True, margin=18)
     pdf.add_page()
-
-    # ── Cover block ──────────────────────────────────────────────────────────
     pdf.set_fill_color(248, 244, 240)
     pdf.rect(pdf.l_margin, pdf.get_y(), 190, 34, "F")
     pdf.set_font("Helvetica", "B", 20)
@@ -267,8 +250,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
     pdf.cell(0, 6, "May 2026  |  15 Athletes  |  5 Sports  |  Python + Chart.js",
              align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(8)
-
-    # ── 1. Project Overview ───────────────────────────────────────────────────
     pdf.section("1. Project Overview")
     pdf.body(
         "This project builds a fully interactive, browser-based nutrition intelligence "
@@ -283,8 +264,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
         "analysis layer (analysis.py) handles data loading, merging, and statistical "
         "summarisation using pandas, and produces this PDF report."
     )
-
-    # ── 2. Dataset Description ────────────────────────────────────────────────
     pdf.section("2. Dataset Description")
     pdf.body("The dataset is structured as a relational schema with 20 CSV tables:")
     schema = [
@@ -300,8 +279,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
     for name, desc in schema:
         pdf.bullet(f"{name}: {desc}")
     pdf.ln(2)
-
-    # ── 3. Key Findings ───────────────────────────────────────────────────────
     pdf.section("3. Key Findings")
 
     pdf.set_font("Helvetica", "B", 9)
@@ -344,7 +321,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
         rows = [[r["name"], f"{r['total_ml']:.0f}"] for _, r in hydration.head(8).iterrows()]
         pdf.table(headers, rows, widths)
 
-    # ── 4. Visualisation Design ───────────────────────────────────────────────
     pdf.section("4. Dashboard Visualisation Design")
 
     viz = [
@@ -384,7 +360,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
         pdf.cell(0, 6, _s(title), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.body(desc, indent=4)
 
-    # ── 5. Design Choices ─────────────────────────────────────────────────────
     pdf.section("5. Visual Design Choices")
     choices = [
         "Pure-black base (#000000) with diagonal carbon-fibre grid (two overlapping 28 px diamond grids) and CRT scanlines for a street-racing aesthetic.",
@@ -398,7 +373,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
     for c in choices:
         pdf.bullet(c)
 
-    # ── 6. Technical Stack ────────────────────────────────────────────────────
     pdf.section("6. Technical Stack")
     stack = [
         ("Frontend",   "HTML5, CSS3 (clip-path, backdrop-filter, keyframes), JavaScript ES2022"),
@@ -412,7 +386,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
         pdf.kv(label, val, color=(40, 40, 40))
     pdf.ln(2)
 
-    # ── 7. How to Run ─────────────────────────────────────────────────────────
     pdf.section("7. How to Run")
     pdf.body("Prerequisites: Python 3.9+, pip packages in requirements.txt")
     steps = [
@@ -435,8 +408,6 @@ def generate_pdf(master, sport_sum, top_prot, hydration, output="writeup.pdf"):
     pdf.output(output)
     print(f"  PDF written -> {output}")
 
-
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     print("Loading data...")
